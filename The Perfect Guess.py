@@ -79,21 +79,24 @@ while(gameStarted == True):
     elif(userChoice == computerChoice):
 
         print(
-            f"That is the correct guess. Congratulations! It took you {guessNumber} turns.")
+            f"This is the correct guess. Congratulations! It took you {guessNumber} turns.")
+        break
 
-        gameStarted = False
+if(gameStarted == True) :
+    with open("hi-score.txt") as g:
+        hiScore = int(g.read(4))
 
 
-with open("hi-score.txt") as g:
-    hiScore = int(g.read(30))
-
-
-if(guessNumber < hiScore):
-    with open("hi-score.txt", "w") as f:
-        f.write(f"{guessNumber}                                        (The current hi-score for the least number of guesses in the game 'The Perfect Guess')")
-else:
+    if(guessNumber < hiScore):
+        print("You've just broken the hi-score!")
+        with open("hi-score.txt", "w") as f:
+            f.write(f"{guessNumber}      (The current hi-score for the least number of guesses in the game 'The Perfect Guess')")
+    else:
+        pass
+else :
     pass
 
+gameStarted = False
 
 
 # Success!
