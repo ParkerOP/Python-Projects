@@ -90,9 +90,10 @@ with open("hi-score.txt") as g:
 
 if(guessNumber < hiScore):
     with open("hi-score.txt", "w") as f:
-        f.write(f"{guessNumber}                                        (The current hi-score for the least number of guesses in the game 'The Perfect Guess'")
+        f.write(f"{guessNumber}                                        (The current hi-score for the least number of guesses in the game 'The Perfect Guess')")
 else:
     pass
+
 
 
 # Success!
