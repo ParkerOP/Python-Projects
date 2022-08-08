@@ -39,7 +39,7 @@ while(gameStarted == True):
 
         print("That is not correct. Higher number please!")
 
-        while(True) :
+        while(True):
 
             try:
                 userChoice = int(input("Can you guess it?"))
@@ -49,11 +49,11 @@ while(gameStarted == True):
 
         guessNumber += 1
 
-    elif(userChoice > computerChoice and userChoice < 1000) :
+    elif(userChoice > computerChoice and userChoice < 1000):
 
         print("That is not correct. Lower number please!")
 
-        while(True) :
+        while(True):
 
             try:
                 userChoice = int(input("Can you guess it?"))
@@ -63,20 +63,20 @@ while(gameStarted == True):
 
         guessNumber += 1
 
-    elif(userChoice > 1000 or userChoice < 0) :
+    elif(userChoice > 1000 or userChoice < 0):
 
         print("Number out of range!")
 
-        while(True) :
+        while(True):
 
-            try :
+            try:
 
                 userChoice = int(input("Can you guess it?"))
                 break
             except:
                 print("That's not a number!")
 
-    elif(userChoice == computerChoice) :
+    elif(userChoice == computerChoice):
 
         print(
             f"That is the correct guess. Congratulations! It took you {guessNumber} turns.")
@@ -84,6 +84,15 @@ while(gameStarted == True):
         gameStarted = False
 
 
+with open("hi-score.txt") as g:
+    hiScore = int(g.read(30))
+
+
+if(guessNumber < hiScore):
+    with open("hi-score.txt", "w") as f:
+        f.write(f"{guessNumber}                                        (The current hi-score for the least number of guesses in the game 'The Perfect Guess'")
+else:
+    pass
+
 
 # Success!
-
