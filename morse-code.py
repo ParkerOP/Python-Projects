@@ -5,10 +5,17 @@ print("Hi there, User!")
 
 userInput = input("Type a sentence to convert it into morse code :\n").lower()
 
-lis = ["a", "b", "c", "d", "e","f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
+lis = ["a", "b", "c", "d", "e","f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"] 
 
-    
-    
+lis2 = ["!", "@", "#", "$", "^", "&", "*", "(", ")", "-", "_", "%", "[", "]", "{", "}", "\\", "|", ";", ":", ",", "<", ".", ">", "/", "?"]
+
+for i in lis2 :
+    if(i in userInput) :
+        print("Only alphabetical letters, numbers and spaces are allowed!")
+        exit(1)
+    else :
+        pass
+
 userInput = userInput.replace("a", "• —  ")             
 userInput = userInput.replace("b", "— • • •  ")   
 userInput = userInput.replace("c", "— • — •  ")   
