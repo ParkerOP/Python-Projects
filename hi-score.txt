@@ -1,1 +1,1 @@
-9      (The current hi-score for the least number of guesses in the game 'The Perfect Guess')
+6      (The current hi-score for the least number of guesses in the game 'The Perfect Guess')
