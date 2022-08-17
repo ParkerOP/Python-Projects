@@ -11,7 +11,7 @@ lis2 = ["!", "@", "#", "$", "^", "&", "*", "(", ")", "-", "_", "%", "[", "]", "{
 
 for i in lis2 :
     if(i in userInput) :
-        print("Only alphabetical letters, numbers and spaces are allowed!")
+        print("Only alphanumerical letters and spaces are allowed!")
         exit(1)
     else :
         pass
