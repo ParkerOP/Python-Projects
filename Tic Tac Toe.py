@@ -101,14 +101,17 @@ if(__name__ == "__main__"):
 
             win = checkWin(xState, oState)
             if(win == "x"):
+                print("\n")
                 printBoard(xState, oState)
                 print(f"Game Over! PLayer 1 wins in {xTurns} turns!")
                 break
             elif(win == "o"):
+                print("\n")
                 printBoard(xState, oState)
                 print(f"Game Over! PLayer 2 wins in {oTurns} turns!")
                 break
             elif(totalTurns == 9):
+                print("\n")
                 printBoard(xState, oState)
                 print("The match has been tied! You both did a great play.")
                 break
@@ -212,14 +215,17 @@ if(__name__ == "__main__"):
 
             win = checkWin(xState, oState)
             if(win == "x"):
+                print("\n")
                 printBoard(xState, oState)
                 print(f"Game Over! PLayer wins in {xTurns} turns!")
                 break
             elif(win == "o"):
+                print("\n")
                 printBoard(xState, oState)
                 print(f"Game Over! Computer wins in {oTurns} turns!")
                 break
             elif(totalTurns == 9):
+                print("\n")
                 printBoard(xState, oState)
                 print("The match has been tied! You played well, player.")
                 break
