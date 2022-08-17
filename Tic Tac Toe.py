@@ -38,7 +38,7 @@ def checkWin(xState, oState):
 if(__name__ == "__main__"):
     print("Welcome to the game of Tic Tac Toe, player!")
     time.sleep(1.5)
-    print("How do you want to play the game? Please type 'computer' to play with computer or type 'player' to play a 2 player game.")
+    print("How do you want to play the game? Please type 'comp' to play with computer or type 'player' to play a 2 player game.")
     gameChoice = None
     while(True):
         gameChoice = input("").lower()
@@ -58,6 +58,8 @@ if(__name__ == "__main__"):
         xTurns = 0
         oTurns = 0
         totalTurns = 0
+        print("\nA game between two players has been started. Good luck to both of you!")
+        time.sleep(0.5)
         while(True):
             print("\n")
             printBoard(xState, oState)
@@ -65,7 +67,13 @@ if(__name__ == "__main__"):
                 print("Player 1's turn : ", end="")
                 correctChoice = False
                 while(correctChoice != True):
-                    xChoice = int(input(""))
+                    while(True):
+                        try:
+                            xChoice = int(input(""))
+                            break
+                        except:
+                            print("Please type a whole number : ", end="")
+
                     if(xChoice <= 8):
 
                         if(xState[xChoice] == 0 and oState[xChoice] == 0):
@@ -84,7 +92,12 @@ if(__name__ == "__main__"):
                 correctChoice = False
                 print("Player 2's turn : ", end="")
                 while(correctChoice != True):
-                    oChoice = int(input(""))
+                    while(True):
+                        try:
+                            oChoice = int(input(""))
+                            break
+                        except:
+                            print("Please type a whole number : ", end="")
                     if(oChoice <= 8):
                         if(xState[oChoice] == 0 and oState[oChoice] == 0):
                             oState[oChoice] = 1
@@ -103,12 +116,12 @@ if(__name__ == "__main__"):
             if(win == "x"):
                 print("\n")
                 printBoard(xState, oState)
-                print(f"Game Over! PLayer 1 wins in {xTurns} turns!")
+                print(f"Game Over! Player 1 wins in {xTurns} turns!")
                 break
             elif(win == "o"):
                 print("\n")
                 printBoard(xState, oState)
-                print(f"Game Over! PLayer 2 wins in {oTurns} turns!")
+                print(f"Game Over! Player 2 wins in {oTurns} turns!")
                 break
             elif(totalTurns == 9):
                 print("\n")
@@ -124,6 +137,8 @@ if(__name__ == "__main__"):
         xTurns = 0
         oTurns = 0
         totalTurns = 0
+        print("\nA game between player and computer has been started. Good luck player!")
+        time.sleep(0.5)
         while(True):
             print("\n")
             printBoard(xState, oState)
@@ -132,7 +147,12 @@ if(__name__ == "__main__"):
                 print("Player's turn : ", end="")
                 correctChoice = False
                 while(correctChoice != True):
-                    xChoice = int(input(""))
+                    while(True):
+                        try:
+                            xChoice = int(input(""))
+                            break
+                        except:
+                            print("Please choose a whole number : ", end="")
                     if(xChoice <= 8):
 
                         if(xState[xChoice] == 0 and oState[xChoice] == 0):
@@ -154,7 +174,7 @@ if(__name__ == "__main__"):
                     0, 4, 8], [2, 4, 6], [0, 3, 6], [1, 4, 7], [2, 5, 8]]
                 matchFound = False
                 winMoveFound = False
-                for g in winChances :
+                for g in winChances:
                     if(sum(oState[g[0]], oState[g[1]]) == 2 or sum(oState[g[1]], oState[g[2]]) == 2 or sum(oState[g[0]], oState[g[2]]) == 2):
                         if(xState[g[0]] == 0 and oState[g[0]] == 0):
                             oState[g[0]] = 1
@@ -174,8 +194,8 @@ if(__name__ == "__main__"):
                             totalTurns += 1
                             winMoveFound = True
                             break
-                if(winMoveFound == False) :
-                    for i in winChances :
+                if(winMoveFound == False):
+                    for i in winChances:
                         if(sum(xState[i[0]], xState[i[1]]) == 2 or sum(xState[i[1]], xState[i[2]]) == 2 or sum(xState[i[0]], xState[i[2]]) == 2):
                             if(xState[i[0]] == 0 and oState[i[0]] == 0):
                                 oState[i[0]] = 1
@@ -195,7 +215,7 @@ if(__name__ == "__main__"):
                                 totalTurns += 1
                                 matchFound = True
                                 break
-                if(matchFound == False and winMoveFound == False) :
+                if(matchFound == False and winMoveFound == False):
                     for k in winChances:
                         if(xState[k[0]] == 0 and oState[k[0]] == 0):
                             oState[k[0]] = 1
@@ -217,7 +237,7 @@ if(__name__ == "__main__"):
             if(win == "x"):
                 print("\n")
                 printBoard(xState, oState)
-                print(f"Game Over! PLayer wins in {xTurns} turns!")
+                print(f"Game Over! Player wins in {xTurns} turns!")
                 break
             elif(win == "o"):
                 print("\n")
@@ -230,3 +250,6 @@ if(__name__ == "__main__"):
                 print("The match has been tied! You played well, player.")
                 break
             chance = 1 - chance
+
+
+# Success!
