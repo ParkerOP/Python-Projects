@@ -83,12 +83,14 @@ def display(tries) :
 def hangman(word) :
     tries = 6
     listletters = list(word)
+    listletters2 = list(word)
     alreadyGuessed = []
+    alreadyGuessedRightLetters = []
     underscores = ["_"]*len(word)
     win = False
     print("Welcome to Hangman, player! Do you have what it takes to be a pro guesser?\n")
     time.sleep(0.5)
-    print("Computer has chosen a word. Can you guess it?\n")
+    print("Computer has chosen a word. Can you guess it?\nHint available : You can type type 'hint' to activate it.\n")
     print(f"{display(tries)}\n")
     print(f"Tries remaining :  {tries}")
     underscore_updated = " ".join(underscores)
@@ -96,16 +98,66 @@ def hangman(word) :
     userInput = None
     acceptedChoice = False
     letterCount = 0
+    hintsRemaining = 1
+
     while(win == False) :
         if(letterCount != len(listletters) and tries > 0) :
             while(acceptedChoice == False) :
                 userInput = input("Guess a letter from the word : ").upper()
                 if(userInput.isalpha() == True and len(userInput) == 1) :
                     acceptedChoice = True
+                elif(userInput == "HINT") :
+                    acceptedChoice = True
                 else :
-                    print("Input can be only a single alphabetical character.")
+                    print("Input can be only a single alphabetical character or 'hint'.")
 
-            if(userInput in listletters) :
+            if(userInput == "HINT") :
+                if(letterCount == len(word) - 1) :
+                    print("Hints can't be used when only the last letter is remaining!")
+                    acceptedChoice = False
+                elif(letterCount < len(word) - 1 and hintsRemaining > 0) :
+                    time.sleep(0.2)
+                    print("The Hint tool has been used.\nA random letter from the word will be filled in for you. Remaining Hints: 0\n")
+                    wordFilled = random.choice(listletters2)
+                    while(hintsRemaining > 0) :
+                        if(wordFilled not in alreadyGuessedRightLetters) :
+                            enumerated_list = list(enumerate(listletters))
+                            for count,i in enumerated_list :
+                                if(enumerated_list[count][1] == wordFilled) :
+                                    underscores[count] = wordFilled
+                                    underscore_updated = " ".join(underscores)
+                                    letterCount += 1
+                                    listletters[count] = "$"
+                                    break
+                            alreadyGuessedRightLetters.append(wordFilled)
+                            hintsRemaining -= 1
+                            acceptedChoice = False
+                            time.sleep(0.5)      
+                            print(f"{underscore_updated}\n")
+                        elif(wordFilled in alreadyGuessedRightLetters) :
+                            wordFilled = random.choice(listletters2)
+                            if(wordFilled not in alreadyGuessedRightLetters) :
+                                enumerated_list = list(enumerate(listletters))
+                                for count,i in enumerated_list :
+                                    if(enumerated_list[count][1] == wordFilled) :
+                                        underscores[count] = wordFilled
+                                        underscore_updated = " ".join(underscores)
+                                        letterCount += 1
+                                        listletters[count] = "$"
+                                        break
+                                alreadyGuessedRightLetters.append(wordFilled)
+                                hintsRemaining -= 1
+                                acceptedChoice = False
+                                time.sleep(0.5)      
+                                print(f"{underscore_updated}\n")
+                            else :
+                                pass
+                            
+                else :
+                    print("Hint has already been used once.")
+                    acceptedChoice = False
+
+            elif(userInput in listletters) :
                 print(f"\n{display(tries)}\n")
                 print("\nYou guessed it right!\n")
                 enumerated_list = list(enumerate(listletters))
@@ -117,6 +169,7 @@ def hangman(word) :
                         listletters[count] = "$"
                         break
                 alreadyGuessed.append(userInput)
+                alreadyGuessedRightLetters.append(userInput)
                 
                 acceptedChoice = False      
                 print(f"{underscore_updated}\n")
@@ -145,6 +198,7 @@ def hangman(word) :
 
 def play() :
     word = obtain_word()
+    print(word)
     hangman(word)
     print("Do you want to play again? Y/N")
     while(True) :
