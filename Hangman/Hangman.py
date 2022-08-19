@@ -98,9 +98,11 @@ def hangman(word) :
     userInput = None
     acceptedChoice = False
     letterCount = 0
-    hintsRemaining = 1
+    hintsRemaining = 2
+    
 
     while(win == False) :
+        a = False
         if(letterCount != len(listletters) and tries > 0) :
             while(acceptedChoice == False) :
                 userInput = input("Guess a letter from the word : ").upper()
@@ -117,9 +119,9 @@ def hangman(word) :
                     acceptedChoice = False
                 elif(letterCount < len(word) - 1 and hintsRemaining > 0) :
                     time.sleep(0.2)
-                    print("The Hint tool has been used.\nA random letter from the word will be filled in for you. Remaining Hints: 0\n")
+                    print(f"The Hint tool has been used.\nA random letter from the word will be filled in for you. Remaining Hints: {hintsRemaining-1}\n")
                     wordFilled = random.choice(listletters2)
-                    while(hintsRemaining > 0) :
+                    while(hintsRemaining > 0 and a == False) :
                         if(wordFilled not in alreadyGuessedRightLetters) :
                             enumerated_list = list(enumerate(listletters))
                             for count,i in enumerated_list :
@@ -134,6 +136,7 @@ def hangman(word) :
                             acceptedChoice = False
                             time.sleep(0.5)      
                             print(f"{underscore_updated}\n")
+                            a = True
                         elif(wordFilled in alreadyGuessedRightLetters) :
                             wordFilled = random.choice(listletters2)
                             if(wordFilled not in alreadyGuessedRightLetters) :
@@ -150,11 +153,12 @@ def hangman(word) :
                                 acceptedChoice = False
                                 time.sleep(0.5)      
                                 print(f"{underscore_updated}\n")
+                                a = True
                             else :
                                 pass
                             
                 else :
-                    print("Hint has already been used once.")
+                    print("Hint has already been used twice.")
                     acceptedChoice = False
 
             elif(userInput in listletters) :
@@ -200,13 +204,12 @@ def play() :
     word = obtain_word()
     print(word)
     hangman(word)
-    print("Do you want to play again? Y/N")
     while(True) :
-        userChoice = input("").lower()
+        userChoice = input("Do you want to play again? Y/N ").lower()
         if(userChoice == "yes" or userChoice == "y") :
             word = obtain_word()
             hangman(word)
-            break
+        
         elif(userChoice == "no" or userChoice == "n") :
             break
         else :

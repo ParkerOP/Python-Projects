@@ -1,0 +1,37 @@
+# BASICS OF THE GAME HANGMAN
+
+
+A man's life is in danger. And you've got his fate in your hand. If you guess the word that Mr. Computer gives you correctly, the man will be saved!
+
+Hang on, there is a 'but' here. You have to guess the word in six tries. Each wrong guess will deduct your number of tries by one. Wait, there's 
+another 'but', this one is good for you. Mr. Computer is a kind fellow, he will give you a 'Hint' tool that you can use to help your winning chances.
+
+
+# RULES OF THE GAME
+
+1. A word is chosen by Computer and you have to guess it. The number of underscores printed will tell you about the length of word.
+
+2. You can only type one letter of the word at a time. If there's more than one occurence of the same letter in a word, you will have to type for
+   each letter. 
+   Example :- There is a double occurence of 'A' in 'SAUNA'. You will have to type 'A' two times.
+
+3. You will have to guess the word in 6 tries. But don't worry, the tries will not be deducted if you guess a letter correctly! But it will be deducted
+   by one each time you guess a wrong letter. As your number of tries will reduce, the picture of the hanged man will complete. Once fully completed,
+   the man will be hanged and you will lose the game!
+
+4. Types of input that are valid in the game : All alphabetical letters and the word 'hint'.
+
+5. It doesn't matter if your input is lowercase or uppercase, all kinds of input whether it's lowercase or uppercase or the mix of two is accepted,
+   unless and until it is valid.
+   Example :- 'a' and 'A' both correspond to the same thing. 'hint' written as 'hiNt' or some other kind is also accepted.
+
+6. To help in your guesses, a Hint tool is provided. It can be activated by typing 'hint'. The Hint tool reveals a letter that has not been guessed
+   yet. The tool is only available twice per game, so use it wisely!
+
+   NOTE : When only one letter is remaining to be guessed, the Hint tool can't be activated.
+
+
+Also,
+    Hangman is a fun to play interactive game that is developed to test your wit and your guessing skills. Don't smash your device if you guess a word
+    wrong. :)
+
