@@ -83,6 +83,7 @@ def display(tries) :
 def hangman(word) :
     tries = 6
     listletters = list(word)
+    alreadyGuessed = []
     underscores = ["_"]*len(word)
     win = False
     print("Welcome to Hangman, player! Do you have what it takes to be a pro guesser?\n")
@@ -96,7 +97,7 @@ def hangman(word) :
     acceptedChoice = False
     letterCount = 0
     while(win == False) :
-        if(letterCount != len(word) and tries > 0) :
+        if(letterCount != len(listletters) and tries > 0) :
             while(acceptedChoice == False) :
                 userInput = input("Guess a letter from the word : ").upper()
                 if(userInput.isalpha() == True and len(userInput) == 1) :
@@ -104,24 +105,30 @@ def hangman(word) :
                 else :
                     print("Input can be only a single alphabetical character.")
 
-            if(userInput in word) :
+            if(userInput in listletters) :
                 print(f"\n{display(tries)}\n")
                 print("\nYou guessed it right!\n")
-                enumerated_list = list(enumerate(word))
+                enumerated_list = list(enumerate(listletters))
                 for count,i in enumerated_list :
                     if(enumerated_list[count][1] == userInput) :
                         underscores[count] = userInput
                         underscore_updated = " ".join(underscores)
                         letterCount += 1
+                        listletters[count] = "$"
+                        break
+                alreadyGuessed.append(userInput)
+                
                 acceptedChoice = False      
-                print(underscore_updated)
-            elif(userInput not in word) :
+                print(f"{underscore_updated}\n")
+            elif(userInput not in listletters) :
                 tries -= 1
                 print(f"Oops! Letter '{userInput}' is not present in the word.")
                 time.sleep(0.5)
                 print(f"\n{display(tries)}\n")
-                print(f"Tries remaining : {tries}")
+                print(f"\nTries remaining : {tries}")
+                alreadyGuessed.append(userInput)
                 acceptedChoice = False
+                print(f"{underscore_updated}\n")
         elif(tries <= 0) :
             break
         else :
@@ -132,6 +139,8 @@ def hangman(word) :
             print("Congratulations, you saved the man!")
         elif(tries <= 0) :
             print(f"Better luck next time! The word was : {word}.")
+            alreadyGuessedString = ", ".join(alreadyGuessed)
+            print(f"\nYou guesses were the following : {alreadyGuessedString.upper()}")
 
 
 def play() :
