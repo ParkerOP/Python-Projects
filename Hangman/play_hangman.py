@@ -209,7 +209,6 @@ def hangman(word):
 
 def play():
     word = obtain_word()
-    print(word)
     hangman(word)
     while(True):
         userChoice = input("Do you want to play again? Y/N ").lower()
@@ -223,6 +222,10 @@ def play():
             print("That's not a valid choice.")
 
 
+
 if __name__ == "__main__":
 
     play()
+
+
+# Success!
