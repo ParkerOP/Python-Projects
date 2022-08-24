@@ -11,7 +11,6 @@ pygame.display.set_caption("Snake Game")
 pygame.display.update()
 clock = pygame.time.Clock()
 # Variables
-
 x = screen_width/2
 y = screen_length/2
 x_change = 0
