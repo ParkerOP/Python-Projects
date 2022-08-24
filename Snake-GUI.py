@@ -19,12 +19,12 @@ y_change = 0
 gameOver = False
 snakeSpeed = 20
 blue = (0, 0, 255)
-green = (0, 255, 0)
-red = (255, 0, 0)
+green = pygame.Color("green2")
+red = pygame.Color('red1')
 white = (255, 255, 255)
 black = (0, 0, 0)
 yellow = (255, 255, 0)
-blue2 = (00, 200, 213)
+royalblue = pygame.Color('royalblue4')
 snakeList = []
 snakeLength = 1
 collided = False
@@ -100,7 +100,7 @@ while(gameOver == False) :
 
     pygame.display.update()
     clock.tick(snakeSpeed)
-    screen.fill(blue)
+    screen.fill(royalblue)
 if(x >= screen_width or x < 0 or y >= screen_length or y < 0) :
     message("It's Game Over!", yellow)
     pygame.display.update()
