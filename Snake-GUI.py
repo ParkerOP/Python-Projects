@@ -1,7 +1,7 @@
 import random
 import time
 import pygame
-
+# Make sure that 'Pygame' module is installed on your device before running this. If you don't know how to do so, run 'pip install pygame' in terminal.
 # Initialization
 pygame.init()
 screen_length = 500
